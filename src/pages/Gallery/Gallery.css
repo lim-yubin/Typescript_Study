@@ -1,0 +1,57 @@
+.wrap-container {
+  /*전체컨테이너*/
+  padding: 1vw;
+  margin: 4vw 2vw 2vw 2vw;
+  border: 1px solid red;
+}
+
+.top-container {
+  /*몇개의 사진, 제목등등*/
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.count {
+  /*사진카운트*/
+  width: 33%;
+  border: 1px solid black;
+  text-align: left;
+  align-content: center;
+  align-self: center;
+  font-size: 1vw;
+}
+
+.title {
+  /*타이틀:갤러리*/
+  width: 33%;
+  border: 1px solid black;
+  text-align: center;
+  align-content: center;
+  align-self: center;
+  font-size: 1.3vw;
+  font-weight: 800;
+}
+
+.options {
+  /*옵션:사진 저장 및 삭제 등*/
+  width: 33%;
+  border: 1px solid black;
+  text-align: center;
+  align-content: center;
+  align-self: center;
+}
+
+.image-container {
+  /*전체사진이 담기는 컨테이너*/
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* justify-content: space-between; */
+  width: 100%;
+  height: 100%;
+  border: 1px solid green;
+  margin-top: 1vw;
+  padding: 1vw 0 1vw 0;
+}
