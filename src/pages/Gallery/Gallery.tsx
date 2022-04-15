@@ -1,18 +1,26 @@
+import React, { useEffect, useState } from "react";
 import Thumbnail from "../../components/Thumbnail/Thumbnail";
 import ImageList from "./test.json";
+import Detail from "../../components/Detail/Detail";
 import "./Gallery.css";
 
 export default function Gallery() {
   interface List {
     _id: string;
   }
+  const [isOpen, setIsOpen] = useState(false);
+  const [imgSrc, setImgSrc] = useState("");
 
   const image: List[] = ImageList.renderings;
   const itemsCount = `${image.length} 개의 렌더샷`;
+  const onClick = (e: any) => {
+    setIsOpen(true);
+    setImgSrc(e.target.src);
+  };
 
   return (
     <>
-      <div className="wrap-container">
+      <div className={isOpen ? "not-open" : "wrap-container"}>
         <div className="top-container">
           <div className="count">{itemsCount}</div>
           <div className="title">갤러리</div>
@@ -21,8 +29,25 @@ export default function Gallery() {
 
         <div className="image-container">
           {image.length > 0
-            ? image.map((el, i) => <Thumbnail list={el._id} key={i} />)
+            ? image.map((el, i) => (
+                <Thumbnail onclick={onClick} list={el._id} key={i} />
+              ))
             : null}
+        </div>
+      </div>
+
+      <div className={isOpen ? "detail-container" : "not-open"}>
+        <div className="detail-top">
+          <div className="left-section">
+            <button className="detail-btn">x</button>
+          </div>
+          <div className="right-section">
+            <button className="detail-btn">다운로드</button>
+            <button className="detail-btn">삭제</button>
+          </div>
+        </div>
+        <div className="image-section">
+          <Detail imgSrc={imgSrc} />
         </div>
       </div>
     </>

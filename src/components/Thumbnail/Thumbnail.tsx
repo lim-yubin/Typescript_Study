@@ -4,14 +4,16 @@ import "./Thumbnail.css";
 interface List {
   key: number;
   list: string;
+  onclick: React.MouseEventHandler<HTMLImageElement>;
 }
 
-export default function Thumbnail({ key, list }: List) {
+export default function Thumbnail({ onclick, key, list }: List) {
   const imageSrc: string = list;
+  const id: number = key;
 
   return (
     <>
-      <img className="image-wrap" src={imageSrc}></img>
+      <img id="image-wrap" alt="render" onClick={onclick} src={imageSrc}></img>
     </>
   );
 }

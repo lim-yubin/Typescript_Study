@@ -1,4 +1,4 @@
-.image-wrap {
+#image-wrap {
   width: 19%;
   height: 12vw;
   margin-bottom: 1vw;
@@ -6,4 +6,5 @@
   margin-right: 0.5%;
   border-radius: 10px;
   background-color: lightblue;
+  cursor: pointer;
 }
