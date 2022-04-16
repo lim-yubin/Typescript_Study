@@ -1,8 +1,7 @@
 .wrap-container {
   /*전체컨테이너*/
   padding: 1vw;
-  margin: 4vw 2vw 2vw 2vw;
-  border: 1px solid red;
+  margin: 2vw 2vw 2vw 2vw;
 }
 
 .top-container {
@@ -16,17 +15,17 @@
 .count {
   /*사진카운트*/
   width: 33%;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   text-align: left;
   align-content: center;
   align-self: center;
   font-size: 1vw;
+  color: #444444;
 }
 
 .title {
   /*타이틀:갤러리*/
   width: 33%;
-  border: 1px solid black;
   text-align: center;
   align-content: center;
   align-self: center;
@@ -37,7 +36,6 @@
 .options {
   /*옵션:사진 저장 및 삭제 등*/
   width: 33%;
-  border: 1px solid black;
   text-align: center;
   align-content: center;
   align-self: center;
@@ -45,23 +43,25 @@
 
 .image-container {
   /*전체사진이 담기는 컨테이너*/
+  /* border-top: 1px solid black; */
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  /* justify-content: space-between; */
   width: 100%;
   height: 100%;
-  border: 4px solid green;
+  /* border: 4px solid green; */
   margin-top: 1vw;
   padding: 1vw 0 1vw 0;
 }
+
+/* 디테일사진 컨테이너*/
+/*****************/
 
 .detail-container {
   display: flex;
   flex-direction: column;
   height: 100vh;
   width: auto;
-
   text-align: center;
 }
 
@@ -73,6 +73,36 @@
   border-bottom: 1px black solid;
 }
 
+.left-section {
+  cursor: pointer;
+}
+.right-section {
+  align-self: center;
+  width: 8%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.download-btn {
+  cursor: pointer;
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: auto;
+  font-size: 1em;
+  background-color: white;
+  border: none;
+  width: 70%;
+}
+.download-text {
+  align-self: center;
+}
+
+.delete-btn {
+  align-self: center;
+  margin-right: 5%;
+}
 .image-section {
   height: 100%;
 }
