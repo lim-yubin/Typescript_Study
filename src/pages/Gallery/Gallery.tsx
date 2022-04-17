@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import Thumbnail from "../../components/Thumbnail/Thumbnail";
 import ImageList from "./test.json";
@@ -18,6 +18,7 @@ export interface List {
 export default function Gallery() {
   const [isOpen, setIsOpen] = useState(false);
   const [imgSrc, setImgSrc] = useState("");
+  const [imgIdx, setImgIdx] = useState(-1);
 
   const image: List[] = ImageList.renderings;
   const itemsCount = `${image.length} 개의 렌더샷`;
@@ -29,7 +30,9 @@ export default function Gallery() {
   const closeBtn = () => {
     setIsOpen(false);
     setImgSrc("");
+    // setImgIdx(-1);
   };
+  // useEffect(() => {}, [imgSrc]);
 
   const downloadBtn = () => {
     axios({

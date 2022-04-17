@@ -13,39 +13,32 @@ interface Link {
 }
 
 export default function Detail({ imageArray, imgSrc }: Link) {
+  const valueArr: string[] = imageArray.map((el) => el._id);
+  const idx: number = valueArr.indexOf(imgSrc);
   const [curSrc, setCurSrc] = useState(imgSrc);
-  const [defaultSrc, setDefaultSrc] = useState(imgSrc);
-  const [curIdx, setCurIdx] = useState(0);
+  const [curIdx, setCurIdx] = useState(idx);
+  console.log(curIdx);
+  const update = () => {
+    setCurIdx(idx);
+  };
+  useEffect(() => {
+    update();
+  }, [idx]);
 
-  // const render = () => {
-  //   const tmp = imageArray.map((el) => {
-  //     return el._id;
-  //   });
-  //   const a = tmp.indexOf(imgSrc);
-  //   setCurSrc(tmp[a]);
-  //   setCurIdx(a);
-  //   console.log(curIdx, curSrc);
-  // };
-
-  // useEffect(() => {
-  //   render();
-  // }, [curSrc, curIdx]);
-  // useEffect(() => {
-  //   setDefaultSrc(imgSrc);
-
-  //   console.log("hi");
-  // });
+  // 썸네일 누를때 현재 인덱스랑, 현재 src 변경해야함.
 
   const gotoRight = () => {
     const nextIdx = curIdx + 1;
     const nextSrc = imageArray[nextIdx]._id;
-    setCurIdx(nextIdx);
     const imgTag = document.getElementById("detail-image") as HTMLImageElement;
     imgTag.src = nextSrc;
+    setCurSrc(nextSrc);
+    setCurIdx(nextIdx);
   };
   const gotoLeft = () => {
     const nextIdx = curIdx - 1;
     const nextSrc = imageArray[nextIdx]._id;
+    setCurSrc(nextSrc);
     setCurIdx(nextIdx);
     const imgTag = document.getElementById("detail-image") as HTMLImageElement;
     imgTag.src = nextSrc;
@@ -66,3 +59,21 @@ export default function Detail({ imageArray, imgSrc }: Link) {
     </>
   );
 }
+// const render = () => {
+//   const tmp = imageArray.map((el) => {
+//     return el._id;
+//   });
+//   const a = tmp.indexOf(imgSrc);
+//   setCurSrc(tmp[a]);
+//   setCurIdx(a);
+//   console.log(curIdx, curSrc);
+// };
+
+// useEffect(() => {
+//   render();
+// }, [curSrc, curIdx]);
+// useEffect(() => {
+//   setDefaultSrc(imgSrc);
+
+//   console.log("hi");
+// });
