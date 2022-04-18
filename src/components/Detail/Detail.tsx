@@ -17,15 +17,13 @@ export default function Detail({ imageArray, imgSrc }: Link) {
   const idx: number = valueArr.indexOf(imgSrc);
   const [curSrc, setCurSrc] = useState(imgSrc);
   const [curIdx, setCurIdx] = useState(idx);
-  console.log(curIdx);
+
   const update = () => {
     setCurIdx(idx);
   };
   useEffect(() => {
     update();
   }, [idx]);
-
-  // 썸네일 누를때 현재 인덱스랑, 현재 src 변경해야함.
 
   const gotoRight = () => {
     const nextIdx = curIdx + 1;
@@ -46,34 +44,22 @@ export default function Detail({ imageArray, imgSrc }: Link) {
   return (
     <>
       <div className="detail-wrap">
-        <div className="left-arrow" onClick={gotoLeft}>
-          <FontAwesomeIcon icon={faCircleArrowLeft} size="2x" />
+        <div
+          className={curIdx !== 0 ? "left-arrow" : "hidden-arrow"}
+          onClick={gotoLeft}
+        >
+          <FontAwesomeIcon icon={faCircleArrowLeft} size="lg" />
         </div>
 
         <img id="detail-image" src={imgSrc} alt="render"></img>
 
-        <div className="right-arrow" onClick={gotoRight}>
-          <FontAwesomeIcon icon={faCircleArrowRight} size="2x" />
+        <div
+          className={curIdx !== 117 ? "right-arrow" : "hidden-arrow"}
+          onClick={gotoRight}
+        >
+          <FontAwesomeIcon icon={faCircleArrowRight} size="lg" />
         </div>
       </div>
     </>
   );
 }
-// const render = () => {
-//   const tmp = imageArray.map((el) => {
-//     return el._id;
-//   });
-//   const a = tmp.indexOf(imgSrc);
-//   setCurSrc(tmp[a]);
-//   setCurIdx(a);
-//   console.log(curIdx, curSrc);
-// };
-
-// useEffect(() => {
-//   render();
-// }, [curSrc, curIdx]);
-// useEffect(() => {
-//   setDefaultSrc(imgSrc);
-
-//   console.log("hi");
-// });
