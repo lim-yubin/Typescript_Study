@@ -1,4 +1,4 @@
-import { ChangeEvent, ChangeEventHandler, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import axios from "axios";
 import Thumbnail from "../../components/Thumbnail/Thumbnail";
 import ImageList from "../../test.json";
@@ -87,6 +87,7 @@ export default function Gallery() {
       document.body.removeChild(link);
     });
   };
+
   const checkAll = (e: ChangeEvent<HTMLInputElement>) => {
     setPropCheck(e.target.checked);
   };
@@ -96,10 +97,12 @@ export default function Gallery() {
     setIsChecked(false);
     setPropCancel(true);
   };
+
   useEffect(() => {
     checkedCount();
     console.log("render");
   }, [propCheck, propCancel]);
+
   return (
     <>
       <div className={isOpen ? "not-open" : "wrap-container"}>

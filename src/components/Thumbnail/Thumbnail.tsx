@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Thumbnail.css";
 
 interface List {
@@ -21,7 +21,6 @@ export default function Thumbnail({
   isCancel,
 }: List) {
   const imageSrc: string = list._id;
-  const inputId = `image-checkbox${idx}`;
   return (
     <>
       <div className="image-wrap">
