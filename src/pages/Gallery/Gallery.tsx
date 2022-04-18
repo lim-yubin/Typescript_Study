@@ -20,12 +20,12 @@ export default function Gallery() {
   const [imgSrc, setImgSrc] = useState("");
   const [isChecked, setIsChecked] = useState(false);
   const [countText, setCountText] = useState("");
-  const [allCheck, setAllCheck] = useState(false);
+  const [propCancel, setPropCancel] = useState(false);
   const [propCheck, setPropCheck] = useState(false);
   const image: List[] = ImageList.renderings;
   const itemsCount = `${image.length} 개의 렌더샷`;
 
-  const checkedCount = (e: any) => {
+  const checkedCount = () => {
     const query = 'input[name="thumbnail"]:checked';
     const selected = document.querySelectorAll(query);
     setIsChecked(true);
@@ -33,6 +33,7 @@ export default function Gallery() {
     if (selected.length === 0) {
       setIsChecked(false);
     }
+    setPropCancel(false);
   };
 
   const onClick = (e: any) => {
@@ -43,13 +44,7 @@ export default function Gallery() {
     setIsOpen(false);
     setImgSrc("");
   };
-  const render = () => {
-    if (allCheck) {
-    }
-  };
-  useEffect(() => {
-    render();
-  }, [allCheck]);
+
   const makeDownList = () => {
     const query = 'input[name="thumbnail"]:checked';
     const selected = document.querySelectorAll(query);
@@ -93,18 +88,18 @@ export default function Gallery() {
     });
   };
   const checkAll = (e: ChangeEvent<HTMLInputElement>) => {
-    setAllCheck(e.target.checked);
+    setPropCheck(e.target.checked);
   };
 
   const cancelCheck = () => {
-    const selected = document.getElementsByClassName("image-checkbox");
-    for (let i = 0; i < selected.length; i++) {
-      const tmp = selected[i];
-      tmp.setAttribute("defaultChecked", "false");
-    }
+    setPropCheck(false);
     setIsChecked(false);
+    setPropCancel(true);
   };
-
+  useEffect(() => {
+    checkedCount();
+    console.log("render");
+  }, [propCheck, propCancel]);
   return (
     <>
       <div className={isOpen ? "not-open" : "wrap-container"}>
@@ -152,6 +147,8 @@ export default function Gallery() {
                   key={el._id}
                   idx={idx}
                   count={checkedCount}
+                  isChecked={propCheck}
+                  isCancel={propCancel}
                 />
               ))
             : null}
