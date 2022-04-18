@@ -30,6 +30,7 @@ export default function Thumbnail({
           onClick={onclick}
           src={imageSrc}
         />
+
         {isChecked ? (
           <input
             className="image-checkbox"
