@@ -1,1 +1,1 @@
-Typescript를 이용한 갤러리페이지
+Typescript 와 React를 이용한 갤러리페이지
